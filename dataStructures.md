@@ -188,7 +188,7 @@ int main(){
 ### Implementing Josephus Problem
 
 ```C++
-//Solution
+//Solution - NON COMPILEABLE
 #include "Clist.cpp"
 
 void main(int argc, char *argv[]) {
@@ -394,9 +394,10 @@ int main(){
 			return 0;
 		}
 	```
+
 ```
 
->
+>![alt text](image-2.png)
 
 ---
 ---
@@ -407,8 +408,9 @@ int main(){
 
 ### Bank-Customer simulation
 
+
 ```C++
-//Solution
+//Solution - NON COMPILEABLE
 #include <iostream>
 #include <string>
 #include <strstream>
@@ -521,6 +523,69 @@ int main(int argc, char *argv[]){
 	
 	return 0;
 }
+```
+
+>
+
+---
+---
+
+# !! Priority Queue
+
+## Prooblem Statement #01
+
+### Priority queue implementation for EVENT class
+
+```C++
+//Solution - NON COMPILEABLE
+#include "Event.cpp"
+#define PQMAX 30
+
+class PriorityQueue{
+	
+	
+	public:
+		PriorityQueue():size(0), rear(-1) {};
+		
+		~PriorityQueue();
+		
+		bool full(void){
+			return (size == PQMAX);
+		};
+		
+		Event* remove(){
+			if(size > 0){
+				Event* e = nodes[0];
+				for(int i=0; i<size-1; i++){
+					nodes[i] = nodes[i+1];
+				}
+				size -= 1;
+				rear -= 1;
+				if(size == 0){
+					rear = -1;
+				}
+				return e;
+			}
+			cout << "\n[ERROR]: remove = queue is empty.\n" <<endl;
+			return (Event*)NULL; //return nullPtr
+		};
+		
+		bool insert(Event* e){
+			if( !full() ){
+				rear += 1;
+				nodes[rear] = e;
+				size += 1;
+				sortElements(); //in ascending order
+				return true;
+			}
+			cout << "\n[ERROR]: insert queue is full.\n" << endl;
+			return false;
+		};
+		
+		int length(){
+			return size;
+		};
+};
 ```
 
 >
