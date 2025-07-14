@@ -593,6 +593,154 @@ class PriorityQueue{
 ---
 ---
 
+# !! Binary Tree
+
+## Prooblem Statement #01
+
+### Binary tree implementation
+
+```C++
+//Solution
+	//TreeNode.cpp file
+	#include <cstdlib>
+
+	template <class Object>
+	class TreeNode{
+		private:
+			Object *object;
+			TreeNode *left;
+			TreeNode *right;
+
+		public:
+			//constructors
+			TreeNode(){
+				this->object = NULL;
+				this->left = this->right = NULL;
+			}
+			TreeNode(Object *object){
+				this->object = object;
+				this->left = this->right = NULL;
+			}
+			
+			~TreeNode(){
+				delete object;
+				delete left;
+				delete right;
+			}
+
+			Object* getInfo(){
+				return this->object;
+			}
+			void setInfo(Object *object){
+				this->object = object;
+			}
+			TreeNode* getLeft(){
+				return this->left;
+			}
+			void setLeft(TreeNode *left){
+				this->left = left;
+			}
+			TreeNode* getRight(){
+				return this->right;
+			}
+			void setRight(TreeNode *right){
+				this->right = right;
+			}
+
+			bool isLeaf(){
+				return (this->left == NULL && this->right == NULL);
+			}
+	};
+
+	//main file
+	#include <iostream>
+	#include <cstdlib>
+	#include "TreeNode.cpp"
+
+	using namespace std;
+
+	void insert(TreeNode<int> *root, int *info){
+		TreeNode<int> *node = new TreeNode<int>(info);
+		
+		TreeNode<int> *p, *q;
+		p = q = root;
+		while(*info != *(p->getInfo()) && q != NULL){
+			p = q;
+			
+			if(*info < *(p->getInfo())){
+				q = p->getLeft();
+			}else{
+				q = p->getRight();
+			}
+		}
+		
+		if(*info == *(p->getInfo())){
+			cout << "\n[ERROR]: attempt to insert duplicate.\n" <<endl;
+			delete node;
+		}else if(*info < *(p->getInfo())){
+			p->setLeft(node);
+		}else{
+			p->setRight(node);
+		}
+	}
+
+	int main(int argc, char* argv[]){
+		
+		int x[] = {14, 15, 4, 5, 7, 18, 3, 5, 16, 4, 28, 17, 5, -1};
+		
+		TreeNode<int> *root = new TreeNode<int>();
+		root->setInfo(&x[0]);
+		for(int i=0; x[i]>0; i++){
+			insert(root, &x[i]);
+		}
+		
+		return 0;
+	}
+```
+
+>![alt text](image-3.png)
+
+## Prooblem Statement #02
+
+### BST Traversal methods Recursive versions
+
+```C++
+//Solution - NON COMPILEABLE
+void preorder(TreeNode<int> *treeNode){
+	if(treeNode != NULL){
+		cout << *(treeNode->getInfo()) << " ";
+		preorder(treeNode->getLeft());
+		preorder(treeNode->getRight());
+	}
+}
+
+void inorder(TreeNode<int> *treeNode){
+	if(treeNode != NULL){
+		inorder(treeNode->getLeft());
+		cout << *(treeNode->getInfo()) << " ";
+		inorder(treeNode->getRight());
+	}
+}
+
+void postorder(TreeNode<int> *treeNode){
+	if(treeNode != NULL){
+		inorder(treeNode->getLeft());
+		inorder(treeNode->getRight());
+		cout << *(treeNode->getInfo()) << " ";
+	}
+}
+
+cout << "preorder: " << preorder(root) <<endl;
+cout << "inorder: " << inorder(root) <<endl;
+cout << "postorder: " << preorder(root) <<endl;
+```
+
+>
+
+---
+---
+
+
 ## Prooblem Statement #0
 
 ###
