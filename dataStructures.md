@@ -737,6 +737,59 @@ cout << "postorder: " << preorder(root) <<endl;
 
 >
 
+## Prooblem Statement #02
+
+### BST Traversal methods non-recursive versions
+
+```C++
+//Solution - NON COMPILEABLE
+void inorder(TreeNode<int> *root){
+	Stack<TreeNode<int>* > stack;
+	TreeNode<int> *p;
+	p = root;
+	do{
+		while(p != NULL){
+			stack.push(p);
+			p = p->getLeft();
+		}
+		//at this point, 'left' tree is empty
+		
+		if(!stack.empty()){
+			p = stack.pop();
+			cout << *(p->getInfo()) << " ";
+			//go back & traverse right subtree
+			p = p->getRight();
+		}
+	}while(!stack.empty() || p != NULL);
+}
+```
+
+>
+
+## Prooblem Statement #03
+
+### BST Level Order Traversal
+
+```C++
+//Solution
+void levelorder(TreeNode<int> *treeNode){
+	Queue<TreeNode<int>*> q;
+	if(treeNode == NULL) return;
+	q.enqueue(treeNode);
+	while(!q.empty()){
+		treeNode = q.dequeue();
+		cout << *(treeNode->getInfo()) << " ";
+		if(treeNode->getLeft() != NULL)
+			q.enqueue(treeNode->getLeft());
+		if(treeNode->getRight() != NULL)
+			q.enqueue(treeNode->getRight());
+	}
+	cout << endl;
+}
+```
+
+>
+
 ---
 ---
 
