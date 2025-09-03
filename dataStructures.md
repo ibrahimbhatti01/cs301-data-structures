@@ -220,10 +220,11 @@ void main(int argc, char *argv[]) {
 using namespace std;
 
 //implementing List using an array
+template <typename T>
 class List{
 	private:
 		static const int CAPACITY = 5;
-		int arr[CAPACITY];
+		T arr[CAPACITY];
 		int current;
 		int size;
 		string listName;
@@ -233,12 +234,12 @@ class List{
 		
 		void copy(List list);
 		void clear();
-		void insert(int x, int index);
-		int remove(int x);
-		int removeAt(int index);
-		void update(int x, int index);
-		bool find(int x);
-		int getCurrent();
+		void insert(T x, int index);
+		T remove(T x);
+		T removeAt(int index);
+		void update(T x, int index);
+		bool find(T x);
+		T getCurrent();
 		int length();
 		void display();
 		
@@ -249,17 +250,20 @@ class List{
 		
 };
 
-List::List(string listName) : arr{}{
+template <typename T>
+List<T>::List(string listName) : arr{}{
 	this->listName = listName;
 	current = 0;
 	size = 0;
 }
 
-int List::length(){
+template <typename T>
+int List<T>::length(){
 	return size;
 }
 
-void List::display(){
+template <typename T>
+void List<T>::display(){
 	if(size != 0){
 		cout << "..............................\n";
 		for (int i=0; i<CAPACITY; i++){
@@ -271,11 +275,13 @@ void List::display(){
 	}
 }
 
-int List::getCurrent(){
+template <typename T>
+T List<T>::getCurrent(){
 	return arr[current];
 }
 
-bool List::find(int x){
+template <typename T>
+bool List<T>::find(T x){
 	if(size != 0){
 		for(int i = 0; i<size; i++){
 			if(arr[i] == x ){
@@ -290,7 +296,8 @@ bool List::find(int x){
 	}
 }
 
-void List::update(int x, int index){
+template <typename T>
+void List<T>::update(T x, int index){
 	if(size != 0 && index >= 0 && index < size ){
 		arr[index] = x;
 		current = index;
@@ -299,9 +306,10 @@ void List::update(int x, int index){
 	}
 }
 
-int List::removeAt(int index){
+template <typename T>
+T List<T>::removeAt(int index){
 	if(size != 0 && index >= 0 && index < size ){
-		int removed = arr[index];
+		T removed = arr[index];
 		for(int i=index; i<size; i++){
 			
 			arr[i] = arr[i+1];
@@ -314,13 +322,15 @@ int List::removeAt(int index){
 	}
 }
 
-int List::remove(int x){
+template <typename T>
+T List<T>::remove(T x){
 	if(find(x)){
 		removeAt(current);
 	}
 }
 
-void List::insert(int x, int index){
+template <typename T>
+void List<T>::insert(T x, int index){
 	if(size != CAPACITY && index >= 0 && index < CAPACITY && arr[index] == 0){
 		if(index == CAPACITY-1){
 			arr[index] = x;
@@ -337,7 +347,8 @@ void List::insert(int x, int index){
 	}
 }
 
-void List::clear(){
+template <typename T>
+void List<T>::clear(){
 	for(int i=0; i<CAPACITY; i++){
 		arr[i] = 0;
 	}
@@ -346,7 +357,7 @@ void List::clear(){
 
 int main(){
 
-	List list1("TestList");	
+	List<int> list1("TestList");	
 	
 
 	cout << "Length of list is: " << list1.length() << endl;
