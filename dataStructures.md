@@ -331,7 +331,7 @@ T List<T>::remove(T x){
 
 template <typename T>
 void List<T>::insert(T x, int index){
-	if(size != CAPACITY && index >= 0 && index < CAPACITY && arr[index] == 0){
+	if(size != CAPACITY && index >= 0 && index < CAPACITY && arr[index] == T{}){
 		if(index == CAPACITY-1){
 			arr[index] = x;
 			size++;
