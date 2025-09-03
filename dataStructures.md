@@ -209,6 +209,179 @@ void main(int argc, char *argv[]) {
 
 >
 
+## Prooblem Statement #03 - cont. Need updation
+
+### Implementation of List using Array
+
+```C++
+//Solution
+#include <iostream>
+#include <string>
+using namespace std;
+
+//implementing List using an array
+class List{
+	private:
+		static const int CAPACITY = 5;
+		int arr[CAPACITY];
+		int current;
+		int size;
+		string listName;
+		
+	public:
+		List(string listName);
+		
+		void copy(List list);
+		void clear();
+		void insert(int x, int index);
+		int remove(int x);
+		int removeAt(int index);
+		void update(int x, int index);
+		bool find(int x);
+		int getCurrent();
+		int length();
+		void display();
+		
+		void start();
+		void tail();
+		void next();
+		void back();
+		
+};
+
+List::List(string listName) : arr{}{
+	this->listName = listName;
+	current = 0;
+	size = 0;
+}
+
+int List::length(){
+	return size;
+}
+
+void List::display(){
+	if(size != 0){
+		cout << "..............................\n";
+		for (int i=0; i<CAPACITY; i++){
+			cout << i+1 << ". " << arr[i] <<endl;
+		}
+		cout << "..............................\n";
+	}else{
+		cout << "\n[ALERT]: Cannot Display, Your " << listName << " is empty.\n";
+	}
+}
+
+int List::getCurrent(){
+	return arr[current];
+}
+
+bool List::find(int x){
+	if(size != 0){
+		for(int i = 0; i<size; i++){
+			if(arr[i] == x ){
+				current = i; 
+				return true;
+			}
+		}
+		return false;
+	}else{
+		cout << "\n[ALERT]: Cannot find, Your " << listName << " is empty.\n";
+		return false;
+	}
+}
+
+void List::update(int x, int index){
+	if(size != 0 && index >= 0 && index < size ){
+		arr[index] = x;
+		current = index;
+	}else{
+		cout << "\n[ALERT]: Cannot update. Invalid index, or " << listName << " is empty.\n";
+	}
+}
+
+int List::removeAt(int index){
+	if(size != 0 && index >= 0 && index < size ){
+		int removed = arr[index];
+		for(int i=index; i<size; i++){
+			
+			arr[i] = arr[i+1];
+		}
+		size--;
+		return removed;
+	}else{
+		cout << "\n[ALERT]: Cannot remove. Invalid index, or " << listName << " is empty.\n";
+		return 0;
+	}
+}
+
+int List::remove(int x){
+	if(find(x)){
+		removeAt(current);
+	}
+}
+
+void List::insert(int x, int index){
+	if(size != CAPACITY && index >= 0 && index < CAPACITY && arr[index] == 0){
+		if(index == CAPACITY-1){
+			arr[index] = x;
+			size++;
+		}else{
+			for(int i=size; i>=index; i--){
+				arr[i+1] = arr[i];
+			}
+			arr[index] = x;
+			size++;
+		}
+	}else{
+		cout << "\n[ALERT]: Cannot insert. Invalid index, or this place already contains some value or " << listName << " is full.\n";
+	}
+}
+
+void List::clear(){
+	for(int i=0; i<CAPACITY; i++){
+		arr[i] = 0;
+	}
+	size = 0;
+};
+
+int main(){
+
+	List list1("TestList");	
+	
+
+	cout << "Length of list is: " << list1.length() << endl;
+	
+	list1.display();
+	
+	cout << "current item is: " << list1.getCurrent() << endl;
+	
+	if(list1.find(15)){
+		cout << "15 found" << endl;
+	}else{
+		cout << "15 not found" << endl;
+	}
+	
+	list1.update(12, 0);
+	
+	int rem = list1.removeAt(3);
+	if(rem) cout << "Removed value at 3: " << rem<< endl;
+	
+	list1.remove(3);
+	
+	list1.insert(6, 4);
+	
+	list1.display();
+	
+	list1.clear();
+	
+	list1.display();
+	
+	return 0;
+}
+```
+
+>
+
 ---
 ---
 
