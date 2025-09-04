@@ -1,3 +1,55 @@
+# !! Warm-up Questions
+
+## Problem Statement #01
+
+### Find second largest number from array
+
+```C++
+//solution
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int secondLargest(int arr[], int size){
+	if(size < 2){
+		cerr << "\n[ERROR]: To find second largest, array must have minimun 2 elemnts.\n";
+		return -1;
+	}else{
+		int firstLargest = -INFINITY;
+		int secondLargest = -INFINITY;
+		 
+		for(int i=0; i<size; i++){
+			if(arr[i] > firstLargest){
+				secondLargest = firstLargest;
+				firstLargest = arr[i];
+			}else if(arr[i] > secondLargest && arr[i] != firstLargest){
+				secondLargest = arr[i];
+			}
+		}
+		return secondLargest;
+	}
+}
+
+int main(){
+	const int size = 10;
+	int array[size] = {-4,-9,0,2,8,7,10,2,0,-30};
+	
+	int result;
+	result = secondLargest(array, size);
+	
+	cout << result;
+		
+	return 0;
+}
+```
+
+>![alt text](image-4.png)
+
+
+---
+---
+
+
 # !! General Purpose
 
 ## Problem Statement #0.1
