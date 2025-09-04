@@ -45,6 +45,30 @@ int main(){
 
 >![alt text](image-4.png)
 
+## Problem Statement #02
+
+### Print 1 till 5 in per line in decreasing 1 digit on each line
+
+```C++
+//solution
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main(){
+	int n = 5;
+	
+	for(int i = 0; i<5; i++){
+		for(int j=n-i; j>0; j--){
+			cout << n-j-i+1 << " ";
+		}
+		cout << endl;
+	}
+		
+	return 0;
+}
+```
+
+>![alt text](image-5.png)
 
 ---
 ---
