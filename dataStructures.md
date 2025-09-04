@@ -51,6 +51,8 @@ int main(){
 
 ```C++
 //solution
+
+//My First Solution
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -66,6 +68,24 @@ int main(){
 		
 	return 0;
 }
+
+
+//Improved logic
+// #include <iostream>
+// #include <cmath>
+// using namespace std;
+// int main(){
+// 	int n = 5;
+	
+// 	for(int i = 0; i<5; i++){
+// 		for(int j=0; j<n-i; j++){
+// 			cout << j+1 << " ";
+// 		}
+// 		cout << endl;
+// 	}
+		
+// 	return 0;
+// }
 ```
 
 >![alt text](image-5.png)
