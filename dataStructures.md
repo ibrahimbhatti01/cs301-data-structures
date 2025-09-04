@@ -171,7 +171,7 @@ int main(){
 >![alt text](image-7.png)
 ## Problem Statement #05
 
-### Cont digits in a number
+### Count digits in a number
 
 ```C++
 //solution
@@ -193,6 +193,42 @@ int main() {
     return 0;
 }
 ```
+
+## Problem Statement #06 - My First ever leetcode problem i solved
+
+### Count digits in a number which can divde the number, and return number of digits
+
+```C++
+//solution - O(Log(N))
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int countDigits(int num) {
+        int copy = num;
+        int count = 0;
+        int diviser = 0;
+        while(copy){
+            diviser = copy % 10;
+            if(!(num%diviser)){
+                count++;
+            }
+            copy = floor(copy/10);
+        }
+        return count;
+    }
+
+int main() {
+    
+    cout << countDigits(12);
+    
+    return 0;
+}
+```
+
+>![alt text](image-8.png)
+
+
 
 ---
 ---
