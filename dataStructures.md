@@ -143,6 +143,32 @@ int main(){
 
 >![alt text](image-6.png)
 
+## Problem Statement #04
+
+### Print lower-left binary diagonal
+
+```C++
+//solution
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main(){
+	int n = 6;
+	
+	for(int i=0; i<n; i++){
+		int toggle = 1;
+		for(int j=0; j<i+1; j++){
+			cout << toggle << " ";
+			toggle == 0 ? toggle = 1 : toggle = 0;
+		}
+		cout << endl;
+	}
+		
+	return 0;
+}
+```
+
+
 ---
 ---
 
