@@ -229,6 +229,44 @@ int main() {
 >![alt text](image-8.png)
 
 
+## Problem Statement #07 - Leetcode
+
+### Check for palindrome number
+
+```C
+//solution
+#include <iostream>
+#include <string>
+using namespace std;
+
+    bool isPalindrome(int x) {
+        int copy = x, remainder = 0;
+        long reverse = 0;
+
+        while(x>0){
+            remainder = x % 10;
+            reverse = reverse * 10 + remainder;
+            x = x/10;
+        }
+
+        if(reverse == copy){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+int main() {
+    
+    int x = -121;
+    if(isPalindrome(x))cout << "Palindrome";
+    else cout << "Not Plalindrome.";
+    
+    return 0;
+}
+```
+
+>![alt text](image-9.png)
 
 ---
 ---
