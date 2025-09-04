@@ -169,6 +169,30 @@ int main(){
 ```
 
 >![alt text](image-7.png)
+## Problem Statement #05
+
+### Cont digits in a number
+
+```C++
+//solution
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+	int count = 0;
+	long long num = 1466456;
+	
+	while(num){
+		num = floor(num/10);
+		count++;
+	}
+    
+    cout << count;
+    
+    return 0;
+}
+```
 
 ---
 ---
