@@ -268,6 +268,41 @@ int main() {
 
 >![alt text](image-9.png)
 
+## Problem Statement
+
+### Check if a given number is prime
+
+```C++
+//solution
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+using namespace std;
+
+
+int main() {
+    
+    long long n;
+  	cin >> n;
+  	n = llabs(n);
+  	
+  	bool isPrime = true;
+  	
+  	//use sqrt(n) to keep the loop small. as if there'll exist a diviser it'll exist below square root.
+  	for(int i=2; i<=sqrt(n); i++){
+  		if(n % i == 0){
+  			isPrime = false;
+  			break;
+		  }
+	  }
+	  
+	if(isPrime)cout << n << " is Prime.";
+	else cout << n << " is not prime.";
+	    
+    return 0;
+}
+```
+
 ---
 ---
 
